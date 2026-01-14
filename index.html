@@ -2,249 +2,225 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Max ❤️ Andrelly</title>
+<title>Para Andrelly 💕</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #ffd6e8, #e0c3fc);
-  color: #4a2c3a;
+  background: linear-gradient(135deg, #fff0f6, #efe6ff);
+  color: #5a2d3c;
   text-align: center;
   overflow-x: hidden;
 }
 
-/* FLORES E CORAÇÕES */
-.fall {
+/* CARTINHA INICIAL */
+#carta {
   position: fixed;
-  top: -10%;
-  font-size: 22px;
-  animation: fall linear infinite;
-  opacity: 0.85;
+  inset: 0;
+  background: linear-gradient(135deg, #ffe6f0, #f2e9ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
 }
 
-@keyframes fall {
-  to {
-    transform: translateY(110vh) rotate(360deg);
-  }
-}
-
-/* ANIMAÇÕES */
-.fade {
-  animation: fadeIn 1.6s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* CORAÇÃO PULSANDO */
-.heart {
-  font-size: 2.5em;
-  animation: pulse 1.3s infinite;
-  margin: 15px 0;
+.carta-box {
+  background: #fff;
+  padding: 40px 35px;
+  border-radius: 30px;
+  max-width: 340px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  animation: pulse 1.6s infinite;
 }
 
 @keyframes pulse {
   0% { transform: scale(1); }
-  50% { transform: scale(1.25); }
+  50% { transform: scale(1.04); }
   100% { transform: scale(1); }
 }
 
-header {
-  padding: 90px 20px;
+/* SITE */
+#site {
+  display: none;
 }
 
 section {
-  background: rgba(255,255,255,0.94);
+  background: rgba(255,255,255,0.96);
   margin: 25px;
   padding: 35px;
-  border-radius: 28px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  border-radius: 32px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  animation: fade 1.4s ease;
 }
 
-h1 {
-  font-size: 2.8em;
+@keyframes fade {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-h2 {
-  color: #d63384;
+/* FLORES */
+.fall {
+  position: fixed;
+  top: -10%;
+  font-size: 20px;
+  animation: fall linear infinite;
+  opacity: 0.7;
 }
 
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(360deg); }
+}
+
+/* GALERIA */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
-  margin-top: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+  gap: 16px;
 }
 
 .gallery img {
   width: 100%;
-  border-radius: 18px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
-  transition: transform 0.3s;
-}
-
-.gallery img:hover {
-  transform: scale(1.06);
-}
-
-/* BOTÕES */
-button {
-  background: #d63384;
-  color: white;
-  border: none;
-  padding: 14px 28px;
-  border-radius: 30px;
-  font-size: 1em;
+  border-radius: 20px;
   cursor: pointer;
-  margin-top: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
 
-button:hover {
-  background: #b52a6d;
-}
-
-/* VOLTAR AO TOPO */
-#topo {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  display: none;
-}
-
-/* MODAL SURPRESA */
-#modal {
+/* MODAL */
+#fotoModal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.5);
   display: none;
   align-items: center;
   justify-content: center;
 }
 
-#modal div {
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  max-width: 300px;
+#fotoModal div {
+  background: #fff;
+  padding: 25px;
+  border-radius: 22px;
+  max-width: 280px;
+  font-size: 0.95em;
+}
+
+button {
+  background: #e0568c;
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-size: 1em;
 }
 </style>
 </head>
 
 <body>
 
-<!-- FLORES -->
+<!-- CARTA -->
+<div id="carta">
+  <div class="carta-box">
+    <h2>💌 Uma cartinha pra você</h2>
+    <p>
+      Isso aqui é simples,<br>
+      mas foi feito com muito amor.<br>
+      Espero que você sinta cada pedacinho.
+    </p>
+    <button onclick="abrirCarta()">Abrir 💖</button>
+  </div>
+</div>
+
+<!-- SITE -->
+<div id="site">
+
 <script>
-for(let i=0;i<25;i++){
-  let f = document.createElement("div");
-  f.className = "fall";
-  f.style.left = Math.random()*100 + "vw";
-  f.style.animationDuration = (6 + Math.random()*6) + "s";
-  f.innerHTML = Math.random() > 0.5 ? "🌸" : "💖";
+for(let i=0;i<22;i++){
+  let f=document.createElement("div");
+  f.className="fall";
+  f.style.left=Math.random()*100+"vw";
+  f.style.animationDuration=(7+Math.random()*6)+"s";
+  f.innerHTML=Math.random()>0.5?"🌸":"💗";
   document.body.appendChild(f);
 }
 </script>
 
-<header class="fade">
+<section>
   <h1>Max ❤️ Andrelly</h1>
-  <p>Esse site é um pedacinho do meu coração feito só pra você.</p>
-  <div class="heart">💗</div>
-  <button onclick="abrir()">Clique aqui 💌</button>
-</header>
+  <p>Desde que você chegou, meu mundo ficou mais leve.</p>
+</section>
 
-<section class="fade">
+<section>
   <h2>🌸 Como tudo começou</h2>
   <p>
-    Entre conversas simples, risadas bobas,
-    jogos, vergonha e carinho,
-    algo nasceu sem avisar.
-    Quando vimos… já era amor.
+    Tudo começou de um jeito simples,<br>
+    com conversas, risadas e aquela vontade de continuar falando.<br>
+    Sem perceber, você virou parte dos meus dias.
   </p>
+  <p><strong>📅 Início da nossa história:</strong> <br>
+  <em>— coloque a data aqui —</em></p>
 </section>
 
-<section class="fade">
-  <h2>✨ O que faz tudo ser especial</h2>
+<section>
+  <h2>📅 Datas importantes</h2>
   <p>
-    São os detalhes.
-    O cuidado.
-    As mensagens bobas.
-    O jeito que só você tem.
-    É você.
+    🎂 <strong>Aniversário dela:</strong> <em>— coloque a data —</em><br><br>
+    🎉 <strong>Meu aniversário:</strong> <em>— coloque a data —</em><br><br>
+    💕 <strong>Quando percebi que era amor:</strong> <em>— coloque a data —</em>
   </p>
 </section>
 
-<section class="fade">
-  <h2>🌍 Sonhos juntos</h2>
-  <p>
-    Um dia a gente ainda vai ver as sakuras no Japão.
-    Até lá, seguimos sonhando,
-    rindo e nos escolhendo todos os dias.
-  </p>
-</section>
-
-<section class="fade">
+<section>
   <h2>🎵 Nossa música</h2>
-  <p>Aliança — Tribalistas</p>
+  <p>P.S. I Love You</p>
   <iframe width="300" height="170"
-    src="https://www.youtube.com/embed/9zE9oC3Zq5E?autoplay=1&mute=1"
-    allow="autoplay; encrypted-media"
-    style="border-radius:18px;">
-  </iframe>
+  src="https://www.youtube.com/embed/JIfN8QVmZrM?autoplay=1&mute=1"
+  allow="autoplay"
+  style="border-radius:16px;"></iframe>
 </section>
 
-<section class="fade">
+<section>
   <h2>📸 Nossos momentos</h2>
   <div class="gallery">
-    <img src="foto1.jpg">
-    <img src="foto2.jpg">
-    <img src="foto3.jpg">
-    <img src="foto4.jpg">
-    <img src="foto5.jpg">
-    <img src="foto6.jpg">
-    <img src="foto7.jpg">
-    <img src="foto8.jpg">
-    <img src="foto9.jpg">
-    <img src="foto10.jpg">
+    <img src="foto1.jpg" onclick="foto('Meu lugar favorito sempre foi você 💕')">
+    <img src="foto2.jpg" onclick="foto('Com você, tudo fica mais bonito 🌸')">
+    <img src="foto3.jpg" onclick="foto('Nosso amor é leve e verdadeiro ✨')">
+    <img src="foto4.jpg" onclick="foto('Você é meu sorriso diário 💖')">
+    <img src="foto5.jpg" onclick="foto('Te escolheria sempre 💌')">
+    <img src="foto6.jpg" onclick="foto('Meu coração encontrou casa 💗')">
+    <img src="foto7.jpg" onclick="foto('Momentos simples, amor real 🌷')">
+    <img src="foto8.jpg" onclick="foto('Você é meu lar 🏡')">
+    <img src="foto9.jpg" onclick="foto('Amar você é fácil 💞')">
+    <img src="foto10.jpg" onclick="foto('Pra sempre nós 💍')">
   </div>
 </section>
 
-<section class="fade">
-  <h2>💌 Pra você</h2>
+<section>
+  <h2>💖 Pra você</h2>
   <p>
-    Obrigado por existir.
-    Obrigado por ficar.
-    Obrigado por ser você.
+    Obrigado por existir.<br>
+    Obrigado por ficar.<br>
+    Obrigado por me escolher.<br>
     Eu te amo mais do que palavras conseguem dizer.
   </p>
 </section>
 
-<footer>
-  Feito com amor infinito 💕
-</footer>
+</div>
 
-<button id="topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆</button>
-
-<div id="modal" onclick="fechar()">
-  <div>
-    <h3>💖 Surpresa</h3>
-    <p>
-      Você é a melhor parte dos meus dias.
-      Eu te amo.
-    </p>
-  </div>
+<div id="fotoModal" onclick="this.style.display='none'">
+  <div id="msg"></div>
 </div>
 
 <script>
-window.onscroll = () => {
-  document.getElementById("topo").style.display =
-    window.scrollY > 300 ? "block" : "none";
-};
+function abrirCarta(){
+  document.getElementById("carta").style.display="none";
+  document.getElementById("site").style.display="block";
+}
 
-function abrir(){ document.getElementById("modal").style.display="flex"; }
-function fechar(){ document.getElementById("modal").style.display="none"; }
+function foto(texto){
+  document.getElementById("msg").innerHTML="💖<br>"+texto;
+  document.getElementById("fotoModal").style.display="flex";
+}
 </script>
 
 </body>
